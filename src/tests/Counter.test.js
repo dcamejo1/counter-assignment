@@ -1,5 +1,5 @@
 // import necessary react testing library helpers here
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 // import the Counter component here
 import Counter from "../components/Counter"
@@ -21,15 +21,13 @@ test('should render initial count with value of 0', () => {
   expect(initialCount).toBeInTheDocument();
 });
 
-test('clicking + increments the count', async () => {
+test('clicking + increments the count', () => {
   // Find the + button
   const addButton = screen.getByRole('button', { name: "+" });
   
   // Find the count display element
   const countValue = screen.getByTestId("count").textContent;
   expect(parseInt(countValue)).toEqual(0);
-
-  //fireEvent.click(addButton)
 
   // Click the + button
   act(() => {
@@ -51,8 +49,6 @@ test('clicking - decrements the count', () => {
   // Find the count display element
   const countValue = screen.getByTestId("count").textContent;
   expect(parseInt(countValue)).toEqual(0);
-
-  //fireEvent.click(subtractButton)
 
   // Click the - button
   act(() => {
